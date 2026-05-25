@@ -3,15 +3,15 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 html,
 body,
 #root {
   height: 100%;
-  background: #0A2540;
-  color: #E6F1FF;
+  background: #E2F0F5;
+  color: #062436;
   font-family: 'Manrope', system-ui, sans-serif;
   font-feature-settings: 'ss01', 'cv11';
   -webkit-font-smoothing: antialiased;
@@ -22,7 +22,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Custom scrollbar — slim HUD style */
+/* Custom scrollbar — slim, powder-blue style */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -31,26 +31,29 @@ body {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(34, 225, 255, 0.18);
+  background: rgba(8, 145, 178, 0.22);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(34, 225, 255, 0.32);
+  background: rgba(8, 145, 178, 0.38);
 }
 
 @layer components {
+  /* Light glass — dark border + white surface + shadow */
   .glass {
-    @apply bg-white/[0.025] backdrop-blur-xl border border-white/[0.06] rounded-2xl;
+    @apply bg-white/65 backdrop-blur-xl border border-powder-500/20 rounded-2xl;
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.05),
-      0 24px 60px -24px rgba(0, 0, 0, 0.6);
+      inset 0 1px 0 rgba(255, 255, 255, 0.7),
+      0 8px 24px -6px rgba(15, 60, 80, 0.10),
+      0 2px 6px -1px rgba(15, 60, 80, 0.06);
   }
 
   .glass-strong {
-    @apply bg-white/[0.04] backdrop-blur-xl border border-white/[0.08] rounded-2xl;
+    @apply bg-white/80 backdrop-blur-xl border border-powder-500/25 rounded-2xl;
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.07),
-      0 24px 60px -24px rgba(0, 0, 0, 0.7);
+      inset 0 1px 0 rgba(255, 255, 255, 0.85),
+      0 16px 40px -8px rgba(15, 60, 80, 0.14),
+      0 4px 12px -2px rgba(15, 60, 80, 0.08);
   }
 
   .hud-chip {
@@ -58,12 +61,12 @@ body {
   }
 
   .hud-divider {
-    background: linear-gradient(90deg, transparent, rgba(34, 225, 255, 0.35), transparent);
+    background: linear-gradient(90deg, transparent, rgba(8, 145, 178, 0.35), transparent);
     height: 1px;
   }
 
   .hud-label {
-    @apply font-mono text-[10px] uppercase tracking-[0.22em] text-white/40;
+    @apply font-mono text-[10px] uppercase tracking-[0.22em] text-powder-700;
   }
 
   .display-num {
@@ -84,7 +87,7 @@ body {
     position: absolute;
     width: 14px;
     height: 14px;
-    border-color: rgba(34, 225, 255, 0.55);
+    border-color: rgba(8, 145, 178, 0.55);
   }
   .corner-frame::before {
     top: -1px;
@@ -110,7 +113,7 @@ body {
     background: linear-gradient(
       90deg,
       transparent 0%,
-      rgba(34, 225, 255, 0.08) 50%,
+      rgba(8, 145, 178, 0.10) 50%,
       transparent 100%
     );
     transform: translateX(-100%);
@@ -136,6 +139,6 @@ body {
   }
 
   .text-shadow-glow {
-    text-shadow: 0 0 24px rgba(34, 225, 255, 0.6);
+    text-shadow: 0 1px 2px rgba(15, 60, 80, 0.10);
   }
 }

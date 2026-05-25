@@ -3,15 +3,19 @@ import { Hexagon, Shield, Building2, Lock } from 'lucide-react'
 
 const Badge = ({ icon: Icon, label, value, tone = 'cyan' }) => {
   const tones = {
-    cyan: 'border-hud-cyan/30 text-hud-cyan shadow-[0_0_24px_-8px_rgba(34,225,255,0.5)]',
-    violet: 'border-hud-violet/30 text-hud-violet shadow-[0_0_24px_-8px_rgba(139,108,255,0.55)]',
-    mint: 'border-hud-mint/30 text-hud-mint shadow-[0_0_24px_-8px_rgba(16,244,166,0.55)]',
-    amber: 'border-hud-amber/30 text-hud-amber shadow-[0_0_24px_-8px_rgba(255,181,71,0.55)]',
+    cyan: { color: '#0891B2', bg: 'rgba(8,145,178,0.08)', border: 'rgba(8,145,178,0.25)' },
+    violet: { color: '#7C3AED', bg: 'rgba(124,58,237,0.08)', border: 'rgba(124,58,237,0.25)' },
+    mint: { color: '#059669', bg: 'rgba(5,150,105,0.08)', border: 'rgba(5,150,105,0.25)' },
+    amber: { color: '#D97706', bg: 'rgba(217,119,6,0.10)', border: 'rgba(217,119,6,0.30)' },
   }
+  const t = tones[tone]
   return (
-    <div className={`hud-chip bg-white/[0.03] border ${tones[tone]} backdrop-blur-md`}>
+    <div
+      className="hud-chip backdrop-blur-md border"
+      style={{ color: t.color, background: t.bg, borderColor: t.border }}
+    >
       <Icon size={11} strokeWidth={2.4} />
-      {label && <span className="text-white/40">{label}</span>}
+      {label && <span className="text-powder-700">{label}</span>}
       <span className="font-semibold tracking-[0.16em]">{value}</span>
     </div>
   )
@@ -29,18 +33,27 @@ export default function Header() {
             transition={{ duration: 0.7 }}
             className="relative w-12 h-12 flex items-center justify-center"
           >
-            <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-hud-cyan/20 to-hud-violet/20 blur-md" />
-            <div className="relative w-12 h-12 rounded-xl border border-white/10 bg-ink-900/80 flex items-center justify-center">
+            <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-hud-cyan/30 to-hud-violet/25 blur-md" />
+            <div
+              className="relative w-12 h-12 rounded-xl border flex items-center justify-center"
+              style={{
+                background: 'rgba(255,255,255,0.85)',
+                borderColor: 'rgba(8,145,178,0.25)',
+                boxShadow: '0 4px 12px -2px rgba(15,60,80,0.10), inset 0 1px 0 rgba(255,255,255,0.9)',
+              }}
+            >
               <Hexagon size={22} className="text-hud-cyan" strokeWidth={1.6} />
-              <div className="absolute w-1.5 h-1.5 rounded-full bg-hud-cyan shadow-[0_0_12px_rgba(34,225,255,0.9)]" />
+              <div className="absolute w-1.5 h-1.5 rounded-full bg-hud-cyan shadow-[0_0_8px_rgba(8,145,178,0.8)]" />
             </div>
           </motion.div>
 
           <div>
-            <div className="hud-label mb-1">Telkom SA · WNS · Procurement EBR</div>
-            <h1 className="font-display font-bold tracking-tight text-[22px] sm:text-[26px] leading-[1.05] text-white">
+            <div className="hud-label mb-1" style={{ color: '#3A6175' }}>
+              Telkom SA · WNS · Procurement EBR
+            </div>
+            <h1 className="font-display font-bold tracking-tight text-[22px] sm:text-[26px] leading-[1.05] text-powder-950">
               Procurement Intelligence
-              <span className="ml-2 bg-gradient-to-r from-hud-cyan via-white to-hud-magenta bg-clip-text text-transparent">
+              <span className="ml-2 bg-gradient-to-r from-hud-cyan via-hud-teal to-hud-violet bg-clip-text text-transparent">
                 Command Center
               </span>
             </h1>

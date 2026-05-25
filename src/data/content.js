@@ -1,6 +1,6 @@
-// All data grounded in the Telkom × WNS Procurement EBR FY26 placemat
-// and the "Local Agentic Analytics Architecture" future vision from the deck.
-// Each pillar carries TWO complete views: CURRENT (FY26) and FUTURE (FY27+ agentic).
+// Three primary pillars + maturity model.
+// Governance is folded into the maturity ladder (L1-L5) since L4 Governance
+// Automation is itself the *maturity level achieved* — not a separate domain.
 
 export const PILLARS = [
   // ── OPERATIONS ───────────────────────────────────────────────
@@ -9,21 +9,21 @@ export const PILLARS = [
     title: 'Operations',
     subtitle: 'P2P Operational Excellence',
     icon: 'Gauge',
-    angle: 225, // bottom-left in degrees (12 o'clock = 0, clockwise)
+    angle: 0, // top
     accent: 'cyan',
     current: {
       tagline: 'FY26 — measurable, repeatable gains across PR-to-Pay.',
       headline: 'Foundation Operational',
       summary:
-        'A year of compounding gains across requisition, release, acknowledgement, vendor onboarding, payment terms and supplier engagement. The CoE now operates as a sustained engine of value pass-back.',
+        'Compounding gains across requisition, release, acknowledgement, vendor onboarding, payment terms and supplier engagement. The CoE now operates as a sustained engine of value pass-back, with governance controls embedded structurally.',
       kpis: [
-        { label: 'PR Create', from: 8, to: 88, suffix: '%', delta: '+80pp' },
-        { label: 'PO Create', from: 0, to: 93, suffix: '%', delta: 'Achieved' },
+        { label: 'PR Create Coverage', from: 8, to: 88, suffix: '%', delta: '+80pp' },
         { label: 'PO Release', from: 78, to: 100, suffix: '%', delta: '+22pp' },
         { label: 'Vendor Onboarding', from: 7.8, to: 2.9, suffix: ' d', delta: '−63%', reverse: true },
         { label: 'Vendor NPS (VOS)', from: 75, to: 91, suffix: '%', delta: '+16pp' },
         { label: 'Spot Buy TAT', from: 0, to: 48, suffix: '%', delta: 'faster' },
-        { label: 'Non-Ack PO Reduction', from: 0, to: 36, suffix: '%', delta: 'reduced' },
+        { label: 'Non-Ack PO', from: 0, to: 36, suffix: '%', delta: 'reduced', reverse: true },
+        { label: '>R1M PR Routing', from: 0, to: 100, suffix: '%', delta: 'governed' },
         { label: 'FTE Redeployed', from: 0, to: 5, suffix: '', delta: 'value pass-back' },
       ],
       initiatives: [
@@ -32,9 +32,11 @@ export const PILLARS = [
         'PO Acknowledgement Bot · 64% auto-captured',
         'AP91 payment terms · +14% Qty / +5% Value shifted to standard',
         'Vendor onboarding cycle · 7.8 → 2.9 days through ARS priority monitoring',
-        'Supplier Privacy Statement adoption · 51% (exclusions in flight)',
+        'IT Spend Governance · PRs routed by value and category',
+        'Zero-Bypass control architecture enforced',
       ],
-      callout: '5 FTE redeployed · Vendor NPS 75% → 91% · 29% YoY PR-to-PO TAT improvement',
+      callout:
+        '5 FTE redeployed · Vendor NPS 75% → 91% · 29% YoY PR-to-PO TAT improvement',
     },
     future: {
       tagline: 'FY27+ — touchless operations powered by autonomous AI agents.',
@@ -44,10 +46,10 @@ export const PILLARS = [
       kpis: [
         { label: 'Touchless P2P', from: 0, to: 95, suffix: '%', delta: 'target' },
         { label: 'Predictive Demand', from: 0, to: 12, suffix: ' wk', delta: 'lead time' },
-        { label: 'Auto-Sourcing', from: 0, to: 70, suffix: '%', delta: 'of spot buys' },
+        { label: 'Auto-Sourcing', from: 0, to: 70, suffix: '%', delta: 'spot buys' },
         { label: 'Invoice Match', from: 0, to: 98, suffix: '%', delta: 'first pass' },
         { label: 'Exception Rate', from: 22, to: 4, suffix: '%', delta: '−82%', reverse: true },
-        { label: 'Strategic Hours', from: 30, to: 75, suffix: '%', delta: 'of team time' },
+        { label: 'Strategic Hours', from: 30, to: 75, suffix: '%', delta: 'team time' },
         { label: 'Self-Service PRs', from: 0, to: 60, suffix: '%', delta: 'NL interface' },
         { label: 'Cycle Time', from: 100, to: 18, suffix: '%', delta: '−82%', reverse: true },
       ],
@@ -59,7 +61,8 @@ export const PILLARS = [
         'AI-routed exceptions to the right human in seconds',
         'Continuous supplier health & lead-time learning',
       ],
-      callout: '"Need identified → AI validates → sources → negotiates → PO → paid." Humans manage strategy and exceptions only.',
+      callout:
+        '"Need identified → AI validates → sources → negotiates → PO → paid." Humans manage strategy and exceptions only.',
     },
   },
 
@@ -69,22 +72,22 @@ export const PILLARS = [
     title: 'Transformation',
     subtitle: 'Digital Workforce & Integration',
     icon: 'Workflow',
-    angle: 315, // bottom-right
+    angle: 120, // bottom-right
     accent: 'aqua',
     current: {
       tagline: 'FY26 — bots, SAP and integrations operating as one chain.',
       headline: 'Integrated Digital Workforce',
       summary:
-        'The automation journey has moved beyond isolated bots into a coordinated digital workforce. PR Create, PO Release, PO Ack, SAP ROMC, TBI integration and UiPath Enterprise now operate as one orchestrated chain.',
+        'The automation journey has moved beyond isolated bots into a coordinated digital workforce. PR Create, PO Release, PO Ack, SAP ROMC, TBI integration and UiPath Enterprise now operate as one orchestrated chain, with SAP and Ariba rationalised behind it.',
       kpis: [
         { label: 'PR→PO TAT YoY', from: 0, to: 29, suffix: '%', delta: 'improvement' },
         { label: 'Overall Coverage', from: 0, to: 93, suffix: '%', delta: 'achieved' },
         { label: 'PO Release 31', from: 0, to: 98, suffix: '%', delta: 'RPA-driven' },
         { label: 'PO Release 37', from: 0, to: 100, suffix: '%', delta: 'RPA-driven' },
         { label: 'Live Bots', from: 0, to: 8, suffix: '', delta: 'orchestrated' },
-        { label: 'AP91 Qty Lift', from: 0, to: 14, suffix: '%', delta: 'terms aligned' },
-        { label: 'AP91 Value Lift', from: 0, to: 5, suffix: '%', delta: 'terms aligned' },
-        { label: 'UiPath Migration', from: 0, to: 100, suffix: '%', delta: 'Enterprise' },
+        { label: 'SAP↔Ariba Align.', from: 0, to: 86, suffix: '%', delta: 'rationalised' },
+        { label: 'Work Instructions', from: 0, to: 13, suffix: '', delta: 'refreshed' },
+        { label: 'UiPath Enterprise', from: 0, to: 100, suffix: '%', delta: 'migrated' },
       ],
       initiatives: [
         'UiPath Community → Enterprise migration · complete',
@@ -92,9 +95,10 @@ export const PILLARS = [
         'SAP TBI integration for Telkom data flows',
         'PR Create Bot scope expansion · 13 work instructions refreshed',
         'PO Release Bot expanded to Release strategies 31 & 37',
-        'Cross-tower collaboration · 2 FTE released to higher-value roles',
+        'SAP ↔ Ariba contract & spend alignment',
       ],
-      callout: 'RPA 76% · SAP 15% · Manual 9% — value chain coverage now an integrated 93%.',
+      callout:
+        'RPA 76% · SAP 15% · Manual 9% — value chain coverage now an integrated 93%.',
     },
     future: {
       tagline: 'FY27+ — agentic workforce reasoning, orchestrating, learning.',
@@ -119,7 +123,8 @@ export const PILLARS = [
         'Channel adapters · Teams, Email, ERP, Slack',
         'Strict governance · encryption, no external data movement, model guardrails',
       ],
-      callout: 'Agents become the new digital colleagues — reliable, consistent, sovereign, auditable.',
+      callout:
+        'Agents become the new digital colleagues — reliable, consistent, sovereign, auditable.',
     },
   },
 
@@ -129,7 +134,7 @@ export const PILLARS = [
     title: 'Analytics',
     subtitle: 'Decision Intelligence',
     icon: 'BrainCircuit',
-    angle: 45, // top-right
+    angle: 240, // bottom-left
     accent: 'violet',
     current: {
       tagline: 'FY26 — analytics CoE turning raw data into procurement leverage.',
@@ -137,7 +142,7 @@ export const PILLARS = [
       summary:
         'The CoE has delivered prescriptive B-BBEE scenarios, proactive duplicate-payment monitoring, the VOS supplier feedback platform, P2P health monitoring and active support for OCR / e-Invoicing rollout.',
       kpis: [
-        { label: 'BCX Reporting', from: 0, to: 100, suffix: '%', delta: 'B-BBEE + spend + PO' },
+        { label: 'BCX Reporting', from: 0, to: 100, suffix: '%', delta: 'B-BBEE + spend' },
         { label: 'Dup-Pay Detection', from: 168, to: 24, suffix: ' h', delta: 'cycle', reverse: true },
         { label: 'VOS Adoption', from: 0, to: 91, suffix: '%', delta: 'NPS' },
         { label: 'P2P Health Cov.', from: 0, to: 85, suffix: '%', delta: 'monitored' },
@@ -154,7 +159,8 @@ export const PILLARS = [
         'P2P health monitoring · proactive, not reactive',
         'Deviations platform transition + governed Power BI workspace',
       ],
-      callout: 'Descriptive → Diagnostic → Predictive — the CoE has earned the right to push into Prescriptive and Cognitive analytics.',
+      callout:
+        'Descriptive → Diagnostic → Predictive — the CoE has earned the right to push into Prescriptive and Cognitive analytics.',
     },
     future: {
       tagline: 'FY27+ — cognitive analytics in the flow of work.',
@@ -179,98 +185,52 @@ export const PILLARS = [
         'Insights delivered into Teams, Email, ERP — not just dashboards',
         'Continuous learning from procurement decisions and outcomes',
       ],
-      callout: 'From dashboards to decisions — analytics that explain, simulate and recommend, securely and sovereignly.',
-    },
-  },
-
-  // ── GOVERNANCE ───────────────────────────────────────────────
-  {
-    id: 'governance',
-    title: 'Governance',
-    subtitle: 'Controls, Policy & Risk',
-    icon: 'ShieldCheck',
-    angle: 135, // top-left
-    accent: 'mint',
-    current: {
-      tagline: 'FY26 — embedded governance across the procurement chain.',
-      headline: 'Governance Automation Live',
-      summary:
-        'Maturity level L4. Controls and policy now embedded structurally: IT spend governance, >R1M PR routing, zero-bypass control, SAP ↔ Ariba alignment, SCOC compliance and refreshed SLAs.',
-      kpis: [
-        { label: 'Maturity Level', from: 0, to: 4, suffix: '', delta: 'L4 active' },
-        { label: '>R1M PR Routing', from: 0, to: 100, suffix: '%', delta: 'governed' },
-        { label: 'Zero-Bypass', from: 0, to: 100, suffix: '%', delta: 'enforced' },
-        { label: 'SAP↔Ariba Align.', from: 0, to: 86, suffix: '%', delta: 'rationalised' },
-        { label: 'SCOC Adoption', from: 0, to: 78, suffix: '%', delta: 'in drive' },
-        { label: 'Work Instructions', from: 0, to: 13, suffix: '', delta: 'refreshed' },
-        { label: 'IT Spend Gov.', from: 0, to: 100, suffix: '%', delta: 'live' },
-        { label: 'SLA Realignment', from: 0, to: 100, suffix: '%', delta: 'completed' },
-      ],
-      initiatives: [
-        'IT Spend Governance — PRs routed by value and category',
-        '>R1M PR governance approval layer',
-        'Zero-Bypass control architecture',
-        'SAP ↔ Ariba contract & spend alignment',
-        'SCOC adoption & compliance drive',
-        'SLA refresh aligned to delivery of key objectives',
-      ],
-      callout: 'Governance is no longer paperwork — it lives in the system, before money moves.',
-    },
-    future: {
-      tagline: 'FY27+ — autonomous, self-healing governance.',
-      headline: 'Self-Healing Compliance',
-      summary:
-        'Governance becomes predictive and self-healing. AI monitors every contract, SLA and policy boundary, detects drift, drafts amendments and routes exceptions intelligently. Auditability is continuous, not periodic.',
-      kpis: [
-        { label: 'Predictive Risk', from: 0, to: 72, suffix: ' h', delta: 'pre-warning' },
-        { label: 'Auto-Routed Excp.', from: 0, to: 88, suffix: '%', delta: 'AI-routed' },
-        { label: 'Contract Drift', from: 100, to: 6, suffix: '%', delta: '−94%', reverse: true },
-        { label: 'Continuous Audit', from: 12, to: 100, suffix: '%', delta: 'always-on' },
-        { label: 'Policy Coverage', from: 0, to: 100, suffix: '%', delta: 'AI-enforced' },
-        { label: 'Self-Healing', from: 0, to: 64, suffix: '%', delta: 'of incidents' },
-        { label: 'ESG Scoring', from: 0, to: 100, suffix: '%', delta: 'live' },
-        { label: 'Audit Logs', from: 0, to: 100, suffix: '%', delta: 'AI-summarised' },
-      ],
-      initiatives: [
-        'Predictive risk detection · 72h advance warning on SLA breach',
-        'AI-routed exception handling to the right approver',
-        'Contract pricing-drift detection with auto-amendment drafts',
-        'Live BEE, tax, banking, financial-health supplier scoring',
-        'Continuous audit trail with AI-generated summaries',
-        'Policy-as-code · every change auditable, every action explainable',
-      ],
-      callout: 'Compliance shifts from quarterly review to continuous, intelligent enforcement.',
+      callout:
+        'From dashboards to decisions — analytics that explain, simulate and recommend, securely and sovereignly.',
     },
   },
 ]
 
-export const NARRATIVES = {
-  default: {
-    title: 'Procurement Intelligence Command Center',
-    body: 'Procurement is evolving from a transactional service into an intelligent enterprise capability. Select a pillar to explore — toggle the state to walk from where we are now to where we are heading.',
-  },
-  operations: {
-    current:
-      'Operational excellence has been strengthened through measurable improvements in PR creation, PO release, vendor onboarding, payment-term compliance and supplier engagement.',
-    future:
-      'Operations evolve into a self-driving capability. AI agents perceive, validate, source and pay — humans manage strategy and exceptions only.',
-  },
-  transformation: {
-    current:
-      'The automation journey has moved beyond isolated bots into an integrated digital workforce. Bots, SAP ROMC and the UiPath Enterprise platform now operate as a coordinated chain.',
-    future:
-      'A Local Agentic Architecture replaces task bots with reasoning agents — sovereign, sandboxed, auditable. The digital workforce becomes a digital colleague.',
-  },
-  analytics: {
-    current:
-      'The CoE has earned the right to push deeper — from descriptive and diagnostic into predictive, prescriptive and cognitive analytics.',
-    future:
-      'Analytics moves out of dashboards and into the flow of work. Ask in natural language, get answers, scenarios and recommended actions — securely and sovereignly.',
-  },
-  governance: {
-    current:
-      'Maturity has reached L4 — controls live structurally in the system. Spend, contracts and exceptions are governed before money moves.',
-    future:
-      'Governance becomes predictive and self-healing. AI enforces policy continuously, drafts amendments, and explains every action — audit becomes always-on.',
-  },
+// ── MATURITY MODEL ─────────────────────────────────────────────
+// 5-level Telkom procurement maturity ladder.
+// Current position: L4. Target: L5 (cognitive / autonomous).
+export const MATURITY = {
+  current: 4,
+  target: 5,
+  levels: [
+    {
+      id: 'L1',
+      label: 'Reactive',
+      desc: 'Manual, paper-based. Decentralised, inconsistent execution.',
+    },
+    {
+      id: 'L2',
+      label: 'Optimised',
+      desc: 'Standardised work instructions. Initial automation. Repeatable.',
+    },
+    {
+      id: 'L3',
+      label: 'Integrated',
+      desc: 'Systems connected. RPA at scale. ERP-driven workflows.',
+    },
+    {
+      id: 'L4',
+      label: 'Governance Automation',
+      desc: 'Controls structurally embedded. RPA + SAP + Ariba as one chain.',
+      tag: 'NOW · FY26',
+    },
+    {
+      id: 'L5',
+      label: 'Cognitive · Autonomous',
+      desc: 'Agentic procurement. Self-healing governance. Continuous audit.',
+      tag: 'TARGET · FY27+',
+    },
+  ],
+}
+
+export const APP_INTRO = {
+  current:
+    'Three pillars · one journey. Click any pillar to drill into the FY26 reality. Toggle the state to see the FY27+ agentic vision.',
+  future:
+    'The autonomous procurement ecosystem. Three pillars become agents; the maturity ladder becomes cognitive. Click any pillar to drill in.',
 }

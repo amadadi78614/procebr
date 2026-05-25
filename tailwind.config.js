@@ -9,34 +9,45 @@ export default {
         mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },
       colors: {
-        ink: {
-          // Navy-teal base — lighter and warmer than the previous near-black
-          950: '#0A2540',
-          900: '#11335A',
-          850: '#163F6B',
-          800: '#1B4B7C',
-          700: '#23598F',
-          600: '#2D6BA3',
+        // Powder-blue / turquoise light theme
+        powder: {
+          50:  '#FAFDFE', // near-white surface
+          100: '#F1F8FB', // light surface
+          200: '#E2F0F5', // page base
+          300: '#CFE3EC', // subtle mid
+          400: '#B4D0DC', // visible mid
+          500: '#8FB2C2', // border/divider
+          600: '#5A8194',
+          700: '#3A6175',
+          800: '#1F4A5F',
+          900: '#0D344A',
+          950: '#062436', // primary text
         },
+        // HUD accents — more saturated to read on light backgrounds
         hud: {
-          cyan: '#22E1FF',
-          aqua: '#5EEAD4',
-          mint: '#10F4A6',
-          violet: '#8B6CFF',
-          magenta: '#FF4FA3',
-          amber: '#FFB547',
-          coral: '#FF6B57',
+          cyan: '#0891B2',     // deep cyan
+          'cyan-bright': '#06B6D4', // bright cyan
+          aqua: '#14B8A6',     // turquoise
+          mint: '#10B981',     // emerald
+          teal: '#0D9488',     // teal
+          violet: '#7C3AED',
+          magenta: '#DB2777',
+          amber: '#D97706',
+          coral: '#E11D48',
         },
       },
       boxShadow: {
-        glow: '0 0 28px -4px rgba(34,225,255,0.35), 0 0 6px rgba(34,225,255,0.2)',
-        'glow-violet': '0 0 28px -4px rgba(139,108,255,0.45), 0 0 6px rgba(139,108,255,0.25)',
-        'glow-mint': '0 0 28px -4px rgba(16,244,166,0.4), 0 0 6px rgba(16,244,166,0.22)',
-        'inner-hud': 'inset 0 1px 0 rgba(255,255,255,0.06), inset 0 0 32px rgba(34,225,255,0.05)',
+        // Real shadows now matter — dark on light
+        glow: '0 0 28px -4px rgba(8,145,178,0.30), 0 1px 0 rgba(255,255,255,0.6)',
+        'glow-violet': '0 0 28px -4px rgba(124,58,237,0.32), 0 1px 0 rgba(255,255,255,0.6)',
+        'glow-mint': '0 0 28px -4px rgba(16,185,129,0.32), 0 1px 0 rgba(255,255,255,0.6)',
+        card: '0 4px 12px -2px rgba(15,60,80,0.08), 0 2px 4px -1px rgba(15,60,80,0.06)',
+        'card-lg': '0 24px 48px -12px rgba(15,60,80,0.18), 0 8px 16px -6px rgba(15,60,80,0.10)',
+        'inner-hud': 'inset 0 1px 0 rgba(255,255,255,0.65), 0 1px 2px rgba(15,60,80,0.06)',
       },
       backgroundImage: {
-        'grid-fine': "linear-gradient(rgba(34,225,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(34,225,255,0.05) 1px, transparent 1px)",
-        'radial-fade': 'radial-gradient(ellipse at center, rgba(34,225,255,0.08), transparent 70%)',
+        'grid-fine': "linear-gradient(rgba(58,97,117,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(58,97,117,0.07) 1px, transparent 1px)",
+        'radial-fade': 'radial-gradient(ellipse at center, rgba(8,145,178,0.08), transparent 70%)',
       },
       backgroundSize: {
         'grid-fine': '48px 48px',
