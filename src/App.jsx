@@ -1,55 +1,50 @@
 import { useState } from 'react'
 import { AnimatePresence } from 'framer-motion'
-import { PILLARS } from './data/content'
 import AmbientBackground from './components/AmbientBackground'
 import Header from './components/Header'
-import HomeView from './components/HomeView'
+import TabNav from './components/TabNav'
+import OverviewTab from './components/OverviewTab'
 import DrillView from './components/DrillView'
+import FooterMetrics from './components/FooterMetrics'
 
 export default function App() {
+  const [activeTab, setActiveTab] = useState('overview')
   const [mode, setMode] = useState('current') // 'current' | 'future'
-  const [selectedId, setSelectedId] = useState(null) // null = home view
 
-  const selectedPillar = PILLARS.find((p) => p.id === selectedId)
-  const futureMode = mode === 'future'
-
-  const drillDown = (id) => setSelectedId(id)
-  const drillUp = () => setSelectedId(null)
+  // 'future' tab forces future mode internally for the view
+  const effectiveMode = activeTab === 'future' ? 'future' : mode
 
   return (
-    <div className="relative min-h-screen w-full text-powder-950 font-body overflow-x-hidden">
-      <AmbientBackground futureMode={futureMode} />
+    <div className="relative min-h-screen w-full text-powder-950 font-body overflow-x-hidden flex flex-col">
+      <AmbientBackground futureMode={effectiveMode === 'future'} />
       <Header />
 
-      <main className="relative z-10 px-6 lg:px-10 pb-10">
-        <AnimatePresence mode="wait">
-          {selectedPillar ? (
-            <DrillView
-              key="drill"
-              pillar={selectedPillar}
-              mode={mode}
-              setMode={setMode}
-              onBack={drillUp}
-            />
-          ) : (
-            <HomeView
-              key="home"
-              mode={mode}
-              setMode={setMode}
-              onPillarClick={drillDown}
-            />
-          )}
-        </AnimatePresence>
+      <main className="relative z-10 px-4 pb-3 flex-1 flex flex-col gap-2 min-h-0">
+        {/* Tab navigation */}
+        <TabNav
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+          mode={mode}
+          setMode={setMode}
+        />
 
-        {/* Footer */}
-        <div className="mt-10 pt-4 border-t border-powder-400/30 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-powder-700">
-            Procurement Intelligence · v3.0 · FY26 EBR
-          </div>
-          <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-powder-700">
-            Telkom SA × WNS · Confidential · Executive Use Only
-          </div>
+        {/* Tab content */}
+        <div className="flex-1 min-h-0">
+          <AnimatePresence mode="wait">
+            {activeTab === 'overview' && (
+              <OverviewTab key="overview" mode={effectiveMode} />
+            )}
+            {activeTab === 'future' && (
+              <OverviewTab key="future" mode="future" />
+            )}
+            {['operations', 'transformation', 'analytics'].includes(activeTab) && (
+              <DrillView key={activeTab} pillarId={activeTab} mode={effectiveMode} />
+            )}
+          </AnimatePresence>
         </div>
+
+        {/* Footer hero metrics strip */}
+        <FooterMetrics mode={effectiveMode} />
       </main>
     </div>
   )
