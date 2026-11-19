@@ -3,7 +3,7 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: 'WNS × Telkom — Procurement Intelligence Hub',
-  description: 'Executive Business Review & Maturity Assessment · Procurement · FY26',
+  description: 'Procurement Executive Business Review · FY27 H1 · November 2026 · Telkom SA',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

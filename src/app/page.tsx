@@ -1,35 +1,31 @@
 'use client'
 import { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
-import { ChevronLeft, ChevronRight, BarChart2, Zap, Route } from 'lucide-react'
+import { ChevronLeft, ChevronRight, BarChart2, Zap, Route, Gauge, ShieldCheck } from 'lucide-react'
 import clsx from 'clsx'
 
-const Slide2 = dynamic(() => import('@/components/Slide2'), { ssr: false })
-const Slide3 = dynamic(() => import('@/components/Slide3'), { ssr: false })
-const Slide4 = dynamic(() => import('@/components/Slide4'), { ssr: false })
+const EbrHighlights = dynamic(() => import('@/components/ebr/EbrHighlights'), { ssr: false })
+const EbrAnalytics = dynamic(() => import('@/components/ebr/EbrAnalytics'), { ssr: false })
+const EbrAI = dynamic(() => import('@/components/ebr/EbrAI'), { ssr: false })
+const EbrWayForward = dynamic(() => import('@/components/ebr/EbrWayForward'), { ssr: false })
+const MbrSla = dynamic(() => import('@/components/mbr/MbrSla'), { ssr: false })
 
 const SLIDES = [
-  {
-    id: 0, label: 'Highlights',
-    tag: 'FY26 HIGHLIGHTS',
-    hl: 'Merged domain-led view · Purchasing Excellence · Supplier Enablement · Commercial Value',
-    icon: BarChart2,
-    component: Slide2,
-  },
-  {
-    id: 1, label: 'Automation',
-    tag: 'TRANSFORMATION',
-    hl: 'RPA & Automation Journey · Purchasing Automation Value Chain',
-    icon: Zap,
-    component: Slide4,
-  },
-  {
-    id: 2, label: 'Way Forward',
-    tag: 'WAY FORWARD',
-    hl: 'FY27 Strategic Priorities · Current OCR / e-Invoicing Status · Intelligent Operations',
-    icon: Route,
-    component: Slide3,
-  },
+  { id: 1, label: 'Operations', group: 'FY27 H1 EBR', tag: 'OPERATIONS',
+    hl: 'FY26 vs FY27 H1 · PR Create · PO Create · Spot buy TAT · PO acknowledgement TAT',
+    icon: BarChart2, component: EbrHighlights },
+  { id: 2, label: 'Analytics', group: 'FY27 H1 EBR', tag: 'ANALYTICS',
+    hl: 'Six months in review · Data maturity curve',
+    icon: Gauge, component: EbrAnalytics },
+  { id: 3, label: 'AI Transformation', group: 'FY27 H1 EBR', tag: 'AI TRANSFORMATION',
+    hl: 'RPA in production · Enterprise AI proof of concept · Microsoft route · Use cases · What we need',
+    icon: Zap, component: EbrAI },
+  { id: 4, label: 'Way Forward', group: 'FY27 H1 EBR', tag: 'WAY FORWARD',
+    hl: 'Operational excellence initiatives · Operational shift',
+    icon: Route, component: EbrWayForward },
+  { id: 5, label: 'SLAs', group: 'Appendix', tag: 'APPENDIX',
+    hl: "Service level agreements · August '26 performance · 19 critical SLAs",
+    icon: ShieldCheck, component: MbrSla },
 ]
 
 export default function Dashboard() {
@@ -72,17 +68,21 @@ export default function Dashboard() {
             <p className="text-[13px] font-semibold text-[#0B2545] leading-tight">
               Procurement Executive Business Review
             </p>
-            <p className="text-[10px] text-[#94A3B8]">FY26 · Telkom SA · Confidential</p>
+            <p className="text-[10px] text-[#94A3B8]">FY27 H1 · November 2026 · Telkom SA · Confidential</p>
           </div>
         </div>
 
         {/* Desktop tabs */}
-        <nav className="hidden md:flex gap-1">
+        <nav className="hidden md:flex gap-1 items-center">
           {SLIDES.map((s, i) => {
             const Icon = s.icon
+            const newGroup = i === 0 || SLIDES[i - 1].group !== s.group
             return (
+              <span key={s.id} className="flex items-center gap-1">
+              {newGroup && (
+                <span className={clsx('text-[8.5px] font-bold tracking-[1.2px] uppercase text-[#94A3B8] whitespace-nowrap', i > 0 && 'ml-2 pl-3 border-l border-[#E2E8F0]')}>{s.group}</span>
+              )}
               <button
-                key={s.id}
                 onClick={() => go(i)}
                 className={clsx(
                   'flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[12px] font-medium transition-all duration-150',
@@ -94,6 +94,7 @@ export default function Dashboard() {
                 <Icon size={13} />
                 {s.label}
               </button>
+              </span>
             )
           })}
         </nav>
@@ -142,7 +143,7 @@ export default function Dashboard() {
                 )}>
                 <Icon size={15} />
                 {s.label}
-                <span className="ml-auto text-[10px] opacity-60">{s.tag}</span>
+                <span className="ml-auto text-[10px] opacity-60">{s.group}</span>
               </button>
             )
           })}
@@ -150,15 +151,15 @@ export default function Dashboard() {
       )}
 
       {/* ── Tag banner ─────────────────────────────────────────────────────── */}
-      <div className="bg-[#0B2545] px-4 py-1.5 flex items-center gap-2">
-        <span className="text-[9px] font-bold tracking-[1.5px] uppercase text-white/80">{slide.tag}</span>
-        <span className="text-white/30 text-xs">·</span>
-        <span className="text-[10px] font-semibold text-[#38BDF8] truncate">{slide.hl}</span>
+      <div className="bg-[#EFF6FF] border-b border-[#DBEAFE] px-4 py-1.5 flex items-center gap-2">
+        <span className="text-[9px] font-bold tracking-[1.5px] uppercase text-[#0B2545] whitespace-nowrap">{slide.tag}</span>
+        <span className="text-[#94A3B8] text-xs">·</span>
+        <span className="text-[10px] font-semibold text-[#1670C0] truncate">{slide.hl}</span>
         <div className="ml-auto flex items-center gap-1.5 shrink-0">
           {SLIDES.map((_, i) => (
             <button key={i} onClick={() => go(i)}
               className={clsx('rounded-full transition-all duration-200',
-                i === current ? 'w-4 h-1.5 bg-[#38BDF8]' : 'w-1.5 h-1.5 bg-[#334155] hover:bg-[#475569]'
+                i === current ? "w-4 h-1.5 bg-[#1670C0]" : "w-1.5 h-1.5 bg-[#CBD5E1] hover:bg-[#94A3B8]"
               )}
             />
           ))}
@@ -174,7 +175,7 @@ export default function Dashboard() {
 
       {/* ── Footer ─────────────────────────────────────────────────────────── */}
       <footer className="border-t border-[#E2E8F0] bg-white px-4 py-2 flex items-center justify-between">
-        <p className="text-[10px] text-[#94A3B8]">WNS × Telkom SA · Procurement EBR · May 2026 · Confidential</p>
+        <p className="text-[10px] text-[#94A3B8]">WNS (part of Capgemini) × Telkom SA · Procurement EBR FY27 H1 · November 2026 · Confidential</p>
         <div className="flex items-center gap-3">
           <p className="text-[10px] text-[#94A3B8]">{current + 1} / {SLIDES.length}</p>
           <div className="flex gap-1 sm:hidden">
