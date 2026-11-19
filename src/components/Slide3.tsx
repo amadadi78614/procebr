@@ -50,7 +50,7 @@ const PILLAR_META: Record<string, {
 const OCR_POINTS = [
   { title: 'Domain expertise', body: 'WNS procurement and AP specialists embedded into the implementation support model.', color: '#1D4ED8' },
   { title: 'Phased approach', body: 'Implementation approach phased to reduce disruption and support adoption.', color: '#0F766E' },
-  { title: 'Training readiness', body: 'Training activity positioned post go-live to support business uptake.', color: '#166534' },
+  { title: 'Post go-live support', body: 'WNS MDM continuing support for the e-Invoicing rollout and vendor onboarding waves.', color: '#166534' },
 ]
 
 /* ── MAIN ───────────────────────────────────────────────────────────────── */
@@ -143,7 +143,7 @@ export default function Slide3() {
           style={{ background:'radial-gradient(circle,rgba(56,189,248,.13),transparent 65%)', transform:'translate(30%,-40%)' }}/>
         <div className="relative flex items-center gap-5 px-5 py-3.5">
           <div className="flex-1">
-            <p className="text-[8.5px] font-bold tracking-[.18em] uppercase text-sky-400/80 mb-1">Way Forward</p>
+            <p className="text-[8.5px] font-bold tracking-[.18em] uppercase text-[#38BDF8] mb-1">Way Forward</p>
             <h2 className="text-[17px] font-extrabold text-white leading-tight tracking-tight mb-0.5">
               FY27 Strategic Priorities
             </h2>
@@ -185,7 +185,7 @@ export default function Slide3() {
                 <div>
                   <p className="text-[10.5px] font-bold text-[#0B2545] mb-0.5">Current position</p>
                   <p className="text-[9.5px] text-[#475569] leading-relaxed">
-                    OCR / e-Invoicing remains an active end-to-end S2P implementation focus, with WNS providing procurement and AP domain expertise to support solution direction and operational readiness.
+                    OCR / e-Invoicing went live on 22 August 2026. Vendor onboarding is underway (CMAC – 5 vendors, Amdocs international, 9 ICT vendors across T001 & T080). Open challenge: CMAC invoice duplication to APS.
                   </p>
                 </div>
               </div>
@@ -218,19 +218,20 @@ export default function Slide3() {
               <p className="text-[10px] font-bold text-[#0B2545] flex-1">Go-Live Milestones</p>
               <span className="text-[7.5px] font-black px-2 py-0.5 rounded-full"
                 style={{ background:'#DCFCE7', color:'#15803D', border:'1px solid #86EFAC' }}>
-                TARGET JUL 2025
+                LIVE · 22 AUG 2026
               </span>
             </div>
             <div className="p-3 space-y-1.5">
               {[
-                { name:'Blueprint Sign-Off',        date:'8–15 May',  status:'In Progress', sc:'#B45309', sb:'#FEF3C7' },
-                { name:'APS Implementation',        date:'18–27 May', status:'Planned',     sc:'#6D28D9', sb:'#F5F3FF' },
-                { name:'QA Testing (SAP ZP2)',       date:'29 May–29 Jun', status:'Planned', sc:'#6D28D9', sb:'#F5F3FF' },
-                { name:'Solution UAT',              date:'1–14 Jul',  status:'Planned',     sc:'#6D28D9', sb:'#F5F3FF' },
-                { name:'GO LIVE',                   date:'22 Jul',    status:'Target',      sc:'#166534', sb:'#F0FDF4' },
+                { name:'Blueprint Sign-Off',        date:'May',       status:'Done',        sc:'#166534', sb:'#DCFCE7' },
+                { name:'APS Implementation',        date:'May',       status:'Done',        sc:'#166534', sb:'#DCFCE7' },
+                { name:'QA Testing (SAP ZP2)',       date:'Jun',       status:'Done',        sc:'#166534', sb:'#DCFCE7' },
+                { name:'Solution UAT',              date:'Jul',       status:'Done',        sc:'#166534', sb:'#DCFCE7' },
+                { name:'GO LIVE',                   date:'22 Aug 2026', status:'Live',      sc:'#166534', sb:'#DCFCE7' },
+                { name:'Vendor Onboarding',         date:'Sep 2026',  status:'In Progress', sc:'#B45309', sb:'#FEF3C7' },
               ].map((m, i) => (
                 <div key={m.name} className="flex items-center gap-2.5 rounded-xl px-3 py-2"
-                  style={{ background: i === 4 ? '#F0FDF4' : '#F8FAFC', border: i === 4 ? '1px solid #86EFAC' : '1px solid #F1F5F9' }}>
+                  style={{ background: m.name === 'GO LIVE' ? '#F0FDF4' : '#F8FAFC', border: m.name === 'GO LIVE' ? '1px solid #86EFAC' : '1px solid #F1F5F9' }}>
                   <div className="w-1.5 h-1.5 rounded-full shrink-0"
                     style={{ background: m.sc }}/>
                   <span className="text-[10px] font-semibold text-[#0F172A] flex-1">{m.name}</span>
